@@ -1,0 +1,161 @@
+<!DOCTYPE html> 
+<html> 
+
+<head> 
+	<title>Crazy Calculator</title> 
+
+	<!-- For styling -->
+	<style> 
+		table { 
+			border: 1px solid black; 
+			margin-left: auto; 
+			margin-right: auto; 
+		} 
+
+		input[type="button"] { 
+			width: 100%; 
+			padding: 20px 40px; 
+			background-color: green; 
+			color: white; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+		} 
+
+		input[type="text"] { 
+			padding: 20px 30px; 
+			font-size: 24px; 
+			font-weight: bold; 
+			border: none; 
+			border-radius: 5px; 
+			border: 2px solid black; 
+		} 
+	</style> 
+</head> 
+	
+<body> 
+	
+	<!-- Using Table to Create Calculator Structure Design -->
+	<table id="calcu"> 
+        <tr height = "30px" > 
+			<th colspan="4" id="crazyheader">*** The cRaZy CaLCuLatoR ***</th>
+		</tr> 
+        <tr height = "300px" > 
+			<td colspan="4">
+				<textarea id ="textboxdisplay" name="textboxdisplay" rows="18" cols="80"></textarea>
+            </td>
+		</tr> 
+		
+		<tr> 
+			<td><input type="button" value="1" onclick="dis('1')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="2" onclick="dis('2')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="3" onclick="dis('3')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="age" onclick="setAge()"
+						onkeydown="myFunction(event)"> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="4" onclick="dis('4')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="5" onclick="dis('5')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="6" onclick="dis('6')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="gender" onclick="setGender()"
+						onkeydown="myFunction(event)"> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="7" onclick="dis('7')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="8" onclick="dis('8')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="9" onclick="dis('9')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="labs" onclick="showLabs()"
+						onkeydown="myFunction(event)"> </td> 
+		</tr> 
+		<tr> 
+			<td><input type="button" value="0" onclick="dis('0')"
+						onkeydown="myFunction(event)"> </td> 
+			<td><input type="button" value="." onclick="dis('.')"
+						onkeydown="myFunction(event)"> </td> 
+			
+			<!-- solve function call function solve to evaluate value -->
+			<td><input type="button" value="=" onclick="solve()"> </td> 
+
+			<td><input type="button" value="screening" onclick="showScreeningDue()"
+						onkeydown="myFunction(event)"> </td> 
+		</tr> 
+        <tr> 
+			<td colspan="3"><input type="text" id="result"></td> 
+			<td><input type="button" value="send button" onclick="clr()" /> </td> 
+		</tr> 
+	</table> 
+
+	<script> 
+		
+		// Function that display value 
+		function dis(val) { 
+			document.getElementById("result").value += val 
+		} 
+
+		function myFunction(event) { 
+			if (event.key == '0' || event.key == '1' 
+				|| event.key == '2' || event.key == '3' 
+				|| event.key == '4' || event.key == '5' 
+				|| event.key == '6' || event.key == '7' 
+				|| event.key == '8' || event.key == '9' 
+				|| event.key == '+' || event.key == 'gender' 
+				|| event.key == '*' || event.key == 'age') 
+				document.getElementById("result").value += event.key; 
+		} 
+
+		var cal = document.getElementById("calcu"); 
+		// solve the matter when person presses = 
+		cal.onkeyup = function (event) { 
+			if (event.keyCode === 13) { 
+				console.log("Enter"); 
+				let x = document.getElementById("result").value 
+				console.log(x); 
+				solve(); 
+			} 
+		} 
+		
+		// Function that sets the age of the patient
+		function setAge() { 
+			document.getElementById("textboxdisplay").value = "you have enter the patient's age"
+		} 
+
+		// Function that evaluates the digit and return result 
+		function solve() { 
+			document.getElementById("textboxdisplay").value = "hi javascript- we are readu tp answer the question"
+		} 
+
+		// Function that sets gender to M or F
+		function setGender() { 
+			document.getElementById("textboxdisplay").value = "The gender has been set"
+		} 
+
+
+		// Function that shows what screening is recommended
+		function showScreeningDue() { 
+			document.getElementById("textboxdisplay").value = "the patient should have a colonoscopy and a cat scan for lung cancer, he is also overdue for dermatology"
+		} 
+
+		// Function that displays labs that should be ordered 
+		function showLabs() { 
+			document.getElementById("textboxdisplay").value = "order CBC,chem7,lfts,lipid profile, A1c tst"
+		} 
+		// Function that clear the input display 
+		function clr() { 
+			document.getElementById("result").value = "" ;
+			document.getElementById("textboxdisplay").value = "you have pressed the send button"
+		} 
+		
+	</script> 
+</body> 
+
+</html> 
